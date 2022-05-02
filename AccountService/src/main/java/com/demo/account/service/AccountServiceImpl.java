@@ -2,6 +2,7 @@ package com.demo.account.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.demo.account.bean.AccountBean;
 import com.demo.account.repository.AccountRepository;
 
@@ -15,7 +16,5 @@ public class AccountServiceImpl implements AccountService {
 	public AccountBean signUp(AccountBean accountBean) {
 		
 		return accountRepository.save(accountBean);
-	}
-
-	
+	}	
 }
