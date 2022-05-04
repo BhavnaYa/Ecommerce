@@ -1,23 +1,32 @@
 package com.demo.order.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.demo.order.bean.OrderBean;
 import com.demo.order.service.OrderService;
+
+import java.util.List;
 
 @RestController
 public class OrderController {
 	
 	@Autowired
 	OrderService service;
-	
-	@PostMapping("/addtocart")
+
+	@PostMapping("/addOrder")
 	public OrderBean addToCart(@RequestBody OrderBean order) {
 		return service.addOrder(order);
-		
+	}
+
+	@PostMapping("/cancelOrder/{orderId}")
+	public OrderBean cancelOrder(@PathVariable(name = "orderId") String orderId) throws Exception {
+		return service.cancelOrder(orderId);
+	}
+
+	@GetMapping("/orderHistory")
+	public List<OrderBean> getOrderHistory(@RequestParam(name = "email") String email) throws Exception {
+		return service.getOrderHistory(email);
 	}
 
 }
