@@ -13,7 +13,6 @@ public class ExceptionFormat {
 	
 	private String message;
 	private Date timestamp;
-	private String error;
-	//private String path;
+	private String path;
 
 }
