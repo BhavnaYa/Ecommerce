@@ -21,7 +21,13 @@ public class CustomExceptions extends ResponseEntityExceptionHandler{
 		ExceptionFormat format = new ExceptionFormat(ex.getMessage(), new Date(), request.getDescription(false));
 		return new ResponseEntity<>(format, HttpStatus.NOT_FOUND);
 	}
-	
+
+	@ExceptionHandler(NotFoundException.class)
+	public final ResponseEntity<Object> handleNotFoundException(Exception ex, WebRequest request) {
+		ExceptionFormat format = new ExceptionFormat(ex.getMessage(), new Date(), request.getDescription(false));
+		return new ResponseEntity<>(format, HttpStatus.NOT_FOUND);
+	}
+
 	@ExceptionHandler(RuntimeException.class)
 	public final ResponseEntity<Object> handleGenericException(Exception ex, WebRequest request) {
 		ExceptionFormat format = new ExceptionFormat(ex.getMessage(), new Date(), request.getDescription(false));
