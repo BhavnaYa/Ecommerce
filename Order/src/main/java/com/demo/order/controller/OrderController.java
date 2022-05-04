@@ -20,12 +20,12 @@ public class OrderController {
 	}
 
 	@PostMapping("/cancelOrder/{orderId}")
-	public OrderBean cancelOrder(@PathVariable(name = "orderId") String orderId) throws Exception {
+	public OrderBean cancelOrder(@PathVariable(name = "orderId") String orderId) {
 		return service.cancelOrder(orderId);
 	}
 
 	@GetMapping("/orderHistory")
-	public List<OrderBean> getOrderHistory(@RequestParam(name = "email") String email) throws Exception {
+	public List<OrderBean> getOrderHistory(@RequestParam(name = "email") String email) {
 		return service.getOrderHistory(email);
 	}
 
