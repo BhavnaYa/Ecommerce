@@ -1,6 +1,7 @@
 package com.demo.order.service;
 
 import com.demo.order.enums.OrderStatus;
+import com.demo.utility.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.aggregation.BooleanOperators;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,7 @@ public class OrderService {
 		return repository.save(order);
 	}
 
-	public OrderBean cancelOrder(String orderId) throws Exception {
+	public OrderBean cancelOrder(String orderId) {
 		//OrderBean orderBean = repository.findOrderByOrderId(orderId);
 		Optional<OrderBean> optionalOrderBean = repository.findById(orderId);
 		if (optionalOrderBean.isPresent()) {
@@ -32,11 +33,11 @@ public class OrderService {
 			orderBean.setOrderStatus(OrderStatus.ORDER_CANCELLED);
 			return repository.save(orderBean);
 		} else {
-			throw new Exception();
+			throw new NotFoundException("OrderId: " + orderId + " not found.");
 		}
 	}
 
-	public List<OrderBean> getOrderHistory(String email) throws Exception {
+	public List<OrderBean> getOrderHistory(String email) {
 		return repository.findByEmailId(email);
 	}
 
