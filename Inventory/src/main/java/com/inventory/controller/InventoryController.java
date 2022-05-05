@@ -3,6 +3,7 @@ package com.inventory.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.demo.utility.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.google.common.base.Optional;
 import com.inventory.bean.InventoryBean;
 import com.inventory.service.InventoryService;
-import org.webjars.NotFoundException;
 
 @RestController
 public class InventoryController {
