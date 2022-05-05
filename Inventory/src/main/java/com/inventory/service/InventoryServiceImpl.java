@@ -3,6 +3,7 @@ package com.inventory.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.demo.utility.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,10 +37,12 @@ public class InventoryServiceImpl implements InventoryService {
 	@Override
 	public InventoryBean updateproductDetails(InventoryBean inventoryBean, String productId) {
 		Optional<InventoryBean> productDetails = inventoryRepo.findById(productId);
-		  if (productDetails.isPresent()) {
-			return  inventoryRepo.save(inventoryBean);			  
-		  }
-		return null;
+		if (productDetails.isPresent()) {
+//InventoryBean existingProductDetails=productDetails.get();
+			inventoryBean.setProductId(productId);
+			return inventoryRepo.save(inventoryBean);
+		}
+		throw new NotFoundException("product Id not found"+productId);
 	}
 
 	
