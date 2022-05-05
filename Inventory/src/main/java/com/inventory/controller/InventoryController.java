@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.google.common.base.Optional;
 import com.inventory.bean.InventoryBean;
 import com.inventory.service.InventoryService;
+import org.webjars.NotFoundException;
 
 @RestController
 public class InventoryController {
@@ -28,7 +29,7 @@ public class InventoryController {
 	if (productDetails.isPresent()) {
 		return productDetails;	
 	}
-    return null;	
+    throw new NotFoundException("ProductId: " + productId + " not found.");
 	
 	}
 	
