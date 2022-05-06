@@ -20,8 +20,6 @@ import com.demo.account.service.AccountService;
 
 @RequestMapping("account")
 @RestController
-
-@RequestMapping("/account")
 public class AccountController {
 
 	@Autowired
