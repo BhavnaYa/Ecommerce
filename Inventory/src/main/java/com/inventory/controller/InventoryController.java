@@ -19,10 +19,10 @@ public class InventoryController {
 	private InventoryService inventoryService;
 	
 	@GetMapping("/getProductInfo/{productId}")
-	public java.util.Optional<InventoryBean> getProductInfo(@PathVariable String productId) {
+	public InventoryBean getProductInfo(@PathVariable String productId) {
     java.util.Optional<InventoryBean> productDetails=inventoryService.getProductDetails(productId);
 	if (productDetails.isPresent()) {
-		return productDetails;	
+		return productDetails.get();	
 	}
     throw new NotFoundException("ProductId: " + productId + " not found.");
 	
@@ -55,4 +55,12 @@ public class InventoryController {
 	   
    }
 	
+   @PutMapping(path="/updateProductInventory/{productId}/{flag}")
+   public InventoryBean updateProductInventory(@PathVariable String productId,@PathVariable String flag) {
+	
+	   InventoryBean updateDetails=inventoryService.updateProductInventory(productId,flag);
+	   return updateDetails;
+	   
+   }
+
 }
