@@ -14,4 +14,7 @@ public interface InventoryService {
 	Optional<InventoryBean> getProductDetails(String productId);
 	
 	InventoryBean updateproductDetails(InventoryBean inventoryBean ,String productId);
+	
+	InventoryBean updateProductInventory(String productId,String flag);
+
 }

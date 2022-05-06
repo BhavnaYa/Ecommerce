@@ -45,6 +45,23 @@ public class InventoryServiceImpl implements InventoryService {
 		throw new NotFoundException("product Id not found"+productId);
 	}
 
+	@Override
+	public InventoryBean updateProductInventory(String productId,String flag) {
+		Optional<InventoryBean> productDetails = inventoryRepo.findById(productId);
+		if (productDetails.isPresent()) {
+            InventoryBean updatingInventoryQuantity=productDetails.get();
+            if(flag.equalsIgnoreCase("add")) {
+			updatingInventoryQuantity.setProductInventory(updatingInventoryQuantity.getProductInventory()-1);
+            }
+            else {
+            	updatingInventoryQuantity.setProductInventory(updatingInventoryQuantity.getProductInventory()+1);	
+            }
+			return inventoryRepo.save(updatingInventoryQuantity);
+		}
+		throw new NotFoundException("product Id not found"+productId);
+		
+	}
+
 	
 	
 	
