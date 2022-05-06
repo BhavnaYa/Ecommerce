@@ -1,0 +1,18 @@
+server:
+  port: 3000
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: Inventory-service
+          uri: lb://Inventory-service
+          predicates:
+            - Path=/inventory/**
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/order/**
+        - id: Account-service
+          uri: lb://Account-service
+          predicates:
+            - Path=/account/**
