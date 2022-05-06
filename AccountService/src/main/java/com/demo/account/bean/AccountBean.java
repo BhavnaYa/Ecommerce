@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@Document(collection = "userInfo")
+@Document(collection = "AccountDB")
 public class AccountBean {
 
 	@Id

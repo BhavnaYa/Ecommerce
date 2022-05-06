@@ -14,7 +14,6 @@ public class AccountServiceImpl implements AccountService {
 	
 	@Override
 	public AccountBean signUp(AccountBean accountBean) {
-		
 		return accountRepository.save(accountBean);
 	}	
 }
