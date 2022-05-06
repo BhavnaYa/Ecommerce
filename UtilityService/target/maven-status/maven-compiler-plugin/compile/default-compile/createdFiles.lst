@@ -1,3 +1,4 @@
+com\demo\utility\exceptions\NotFoundException.class
 com\demo\utility\exceptions\ProductOutOfStockException.class
 com\demo\utility\exceptions\CustomExceptions.class
 com\demo\utility\bean\ExceptionFormat.class

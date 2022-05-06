@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 @EnableMongoRepositories
 @SpringBootApplication
-//@EnableEurekaClient
+@
 public class OrderApplication {
 
 	public static void main(String[] args) {
