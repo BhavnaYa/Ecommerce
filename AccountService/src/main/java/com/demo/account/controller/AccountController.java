@@ -5,6 +5,7 @@ import com.demo.account.model.JwtResponse;
 import com.demo.account.service.JwtUserDetailsService;
 import com.demo.account.util.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -13,11 +14,14 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+
 import com.demo.account.bean.AccountBean;
 import com.demo.account.service.AccountService;
 
 @RequestMapping("account")
 @RestController
+
+@RequestMapping("/account")
 public class AccountController {
 
 	@Autowired
