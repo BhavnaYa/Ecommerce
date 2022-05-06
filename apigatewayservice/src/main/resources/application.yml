@@ -16,19 +16,19 @@ spring:
           predicates:
             - Path=/inventory/**
           filters:
-            filters:
               - AddRequestHeader=first-request, first-request-header
               - AddResponseHeader=first-response, first-response-header
         - id: order-service
-          uri: lb://order-service
+          uri: http://localhost:8080/
           predicates:
             - Path=/order/**
           filters:
-            - RewritePath=/order(?<segment>/?.*), $\{segment}
+              - AddRequestHeader=first-request, first-request-header
+              - AddResponseHeader=first-response, first-response-header
         - id: Account-service
-          uri: lb://Account-service
+          uri: http://localhost:8081/
           predicates:
             - Path=/account/**
           filters:
-            - RewritePath=/account(?<segment>/?.*), $\{segment}
-
+              - AddRequestHeader=first-request, first-request-header
+              - AddResponseHeader=first-response, first-response-header
