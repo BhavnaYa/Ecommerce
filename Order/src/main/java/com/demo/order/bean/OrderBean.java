@@ -1,6 +1,9 @@
 package com.demo.order.bean;
 
 import com.demo.order.enums.OrderStatus;
+
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -17,7 +20,7 @@ public class OrderBean {
 	private String emailId;
 	private String address;
 	private OrderStatus orderStatus;
-	private String orderInfo;
+	private List<String> orderInfo;
 	private int quantity;
 	private double orderTotal;
 
