@@ -16,14 +16,8 @@ import com.demo.utility.bean.ExceptionFormat;
 @RestController
 public class CustomExceptions extends ResponseEntityExceptionHandler{
 	
-	@ExceptionHandler(ProductOutOfStockException.class)
+	@ExceptionHandler({ProductOutOfStockException.class, NotFoundException.class})
 	public final ResponseEntity<Object> handleProductOutOfStockException(Exception ex, WebRequest request) {
-		ExceptionFormat format = new ExceptionFormat(ex.getMessage(), new Date(), request.getDescription(false));
-		return new ResponseEntity<>(format, HttpStatus.NOT_FOUND);
-	}
-
-	@ExceptionHandler(NotFoundException.class)
-	public final ResponseEntity<Object> handleNotFoundException(Exception ex, WebRequest request) {
 		ExceptionFormat format = new ExceptionFormat(ex.getMessage(), new Date(), request.getDescription(false));
 		return new ResponseEntity<>(format, HttpStatus.NOT_FOUND);
 	}
@@ -33,6 +27,5 @@ public class CustomExceptions extends ResponseEntityExceptionHandler{
 		ExceptionFormat format = new ExceptionFormat(ex.getMessage(), new Date(), request.getDescription(false));
 		return new ResponseEntity<>(format, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	
 
 }
