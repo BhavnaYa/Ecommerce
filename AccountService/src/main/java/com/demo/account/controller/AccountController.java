@@ -44,10 +44,9 @@ public class AccountController {
 	}
 
 	@PostMapping("/signUp")
-	public ResponseEntity<Object> signUp(@RequestBody AccountBean accountBean) {
+	public ResponseEntity<String> signUp(@RequestBody AccountBean accountBean) {
 		accountService.signUp(accountBean);
-		//return new ResponseEntity<T>("SignedUp Successfully!!", HttpStatus.OK);
-		return new ResponseEntity<Object>(HttpStatus.OK);
+		return new ResponseEntity<>("Success", HttpStatus.OK);
 	}
 
 	private void authenticate(String username, String password) throws Exception {
