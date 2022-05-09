@@ -2,7 +2,10 @@ package com.demo.utility.interceptor;
 
 import com.demo.utility.bean.ExceptionFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
 
+@RequiredArgsConstructor
+@Component
+@Slf4j
 public class HeaderInterceptor implements HandlerInterceptor {
 
     @Override

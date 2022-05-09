@@ -1,5 +1,7 @@
 package com.demo.order.service;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +28,8 @@ public class OrderService {
 		double totalCost=0.0;
 		int totalQuantity=0;
 		for(String productId:productIdList) {
-			InventoryBean productDetails= webClientBuilder.build().get().uri(uri+productId)
+			InventoryBean productDetails= webClientBuilder.build()
+					.get().uri(uri+productId).header("validated","true")
 					.retrieve().bodyToMono(InventoryBean.class).block();
 			totalCost+=	productDetails.getProductPrice();
 			totalQuantity+=1;
@@ -41,7 +44,9 @@ public class OrderService {
 		//update inventory details start
 		String updateInvenUri="http://localhost:8083/inventory/updateProductInventory/";
 		for(String productId:productIdList) {
+			//WebClient webClient = webClientBuilder.build();
 			webClientBuilder.build().put().uri(updateInvenUri+productId+"/add")
+					.header("validated","true")
 					.retrieve().bodyToMono(InventoryBean.class).block();
 			
 		}
@@ -60,7 +65,7 @@ public class OrderService {
 		
 		OrderBean orderBean = orderDetails.get();
 		for(String productId:orderBean.getOrderInfo()) {
-			webClientBuilder.build().put().uri(updateInvenUri+productId+"/cancel")
+			webClientBuilder.build().put().uri(updateInvenUri+productId+"/cancel").header("validated","true")
 					.retrieve().bodyToMono(InventoryBean.class).block();
 		    
 		  }

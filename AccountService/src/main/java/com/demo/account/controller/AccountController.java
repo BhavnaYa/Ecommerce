@@ -5,7 +5,7 @@ import com.demo.account.model.JwtResponse;
 import com.demo.account.service.JwtUserDetailsService;
 import com.demo.account.util.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -44,8 +44,9 @@ public class AccountController {
 	}
 
 	@PostMapping("/signUp")
-	public AccountBean signUp(@RequestBody AccountBean accountBean) {
-		return accountService.signUp(accountBean);
+	public ResponseEntity<String> signUp(@RequestBody AccountBean accountBean) {
+		accountService.signUp(accountBean);
+		return new ResponseEntity<>("Success", HttpStatus.OK);
 	}
 
 	private void authenticate(String username, String password) throws Exception {
@@ -56,11 +57,6 @@ public class AccountController {
 		} catch (BadCredentialsException e) {
 			throw new Exception("INVALID_CREDENTIALS", e);
 		}
-	}
-
-	@GetMapping("/hello")
-	public ResponseEntity<String> helloWorld() {
-		return ResponseEntity.ok("Hello World");
 	}
 
 	@GetMapping("/validity")
