@@ -52,7 +52,7 @@ public class OrderService {
 	
 	
 	public OrderBean cancelOrder(String orderId) {
-		//OrderBean orderBean = repository.findOrderByOrderId(orderId);
+		System.out.println(" ORDER SERVICE!!");
 		String updateInvenUri="http://localhost:8083/inventory/updateProductInventory/";
 	
 		Optional<OrderBean> orderDetails = repository.findById(orderId);
