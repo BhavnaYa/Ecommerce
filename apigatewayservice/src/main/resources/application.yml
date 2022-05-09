@@ -15,20 +15,11 @@ spring:
           uri: http://localhost:8083/
           predicates:
             - Path=/inventory/**
-          filters:
-              - AddRequestHeader=first-request, first-request-header
-              - AddResponseHeader=first-response, first-response-header
         - id: order-service
           uri: http://localhost:8080/
           predicates:
             - Path=/order/**
-          filters:
-              - AddRequestHeader=first-request, first-request-header
-              - AddResponseHeader=first-response, first-response-header
         - id: Account-service
           uri: http://localhost:8081/
           predicates:
             - Path=/account/**
-          filters:
-              - AddRequestHeader=first-request, first-request-header
-              - AddResponseHeader=first-response, first-response-header

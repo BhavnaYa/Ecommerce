@@ -36,11 +36,7 @@ public class InventoryController {
 		return productList;
 		
 	}
-	@GetMapping("/test")
-	public  String test() {
-		return "haiiiiiiiiiiiiiiiii";
 
-	}
 
 	@PostMapping(path="/addProduct")
 	public InventoryBean addProduct(@RequestBody InventoryBean inventoryBean) {
