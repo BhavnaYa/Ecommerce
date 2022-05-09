@@ -18,8 +18,7 @@ public class OrderService {
 	
 	@Autowired
 	private WebClient.Builder webClientBuilder;
-	
-	
+
 	public OrderBean addOrder(OrderBean order) {
 		
 		String uri="http://localhost:8083/inventory/getProductInfo/";
