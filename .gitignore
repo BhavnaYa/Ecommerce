@@ -24,6 +24,6 @@ dist/
 
 **/.classpath
 .project
-.settings/
+**/.settings/
 **/target/**
 .factorypath
