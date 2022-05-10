@@ -44,7 +44,6 @@ public class OrderService {
 		//update inventory details start
 		String updateInvenUri="http://localhost:8083/inventory/updateProductInventory/";
 		for(String productId:productIdList) {
-			//WebClient webClient = webClientBuilder.build();
 			webClientBuilder.build().put().uri(updateInvenUri+productId+"/add")
 					.header("validated","true")
 					.retrieve().bodyToMono(InventoryBean.class).block();
