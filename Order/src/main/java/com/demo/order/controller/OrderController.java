@@ -8,6 +8,8 @@ import com.demo.order.service.OrderService;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/order")
 public class OrderController {
@@ -16,12 +18,12 @@ public class OrderController {
 	OrderService service;
 
 	@PostMapping("/addOrder")
-	public OrderBean addToCart(@RequestBody OrderBean order) {
+	public OrderBean addToCart(@Valid @RequestBody OrderBean order) {
 		return service.addOrder(order);
 	}
 
 	@PostMapping("/cancelOrder/{orderId}")
-	public OrderBean cancelOrder(@PathVariable(name = "orderId") String orderId) {
+	public OrderBean cancelOrder(@Valid @PathVariable(name = "orderId") String orderId) {
 		return service.cancelOrder(orderId);
 	}
 

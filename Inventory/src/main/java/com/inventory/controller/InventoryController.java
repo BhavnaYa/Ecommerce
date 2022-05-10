@@ -3,6 +3,8 @@ package com.inventory.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.demo.utility.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -39,7 +41,7 @@ public class InventoryController {
 
 
 	@PostMapping(path="/addProduct")
-	public InventoryBean addProduct(@RequestBody InventoryBean inventoryBean) {
+	public InventoryBean addProduct(@Valid @RequestBody InventoryBean inventoryBean) {
 		
 		InventoryBean add=inventoryService.addProduct(inventoryBean);
 		
@@ -48,7 +50,7 @@ public class InventoryController {
 	}
 	
    @PutMapping(path="/updateProductDetails/{productId}")
-   public InventoryBean updateProductDetails(@RequestBody InventoryBean inventoryBean,@PathVariable String productId) {
+   public InventoryBean updateProductDetails(@Valid @RequestBody InventoryBean inventoryBean,@PathVariable String productId) {
 	
 	   InventoryBean updateDetails=inventoryService.updateproductDetails(inventoryBean, productId);
 	   return updateDetails;
@@ -56,7 +58,7 @@ public class InventoryController {
    }
 	
    @PutMapping(path="/updateProductInventory/{productId}/{flag}")
-   public InventoryBean updateProductInventory(@PathVariable String productId,@PathVariable String flag) {
+   public InventoryBean updateProductInventory(@Valid @PathVariable String productId,@PathVariable String flag) {
 	
 	   InventoryBean updateDetails=inventoryService.updateProductInventory(productId,flag);
 	   return updateDetails;

@@ -4,6 +4,9 @@ import com.demo.account.model.JwtRequest;
 import com.demo.account.model.JwtResponse;
 import com.demo.account.service.JwtUserDetailsService;
 import com.demo.account.util.JwtTokenUtil;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +38,7 @@ public class AccountController {
 	private JwtUserDetailsService userDetailsService;
 
 	@PostMapping("/authenticate")
-	public ResponseEntity<JwtResponse> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
+	public ResponseEntity<JwtResponse> createAuthenticationToken(@Valid @RequestBody JwtRequest authenticationRequest) throws Exception {
 		authenticate(authenticationRequest.getEmail(), authenticationRequest.getPassword());
 		final UserDetails userDetails = userDetailsService
 				.loadUserByUsername(authenticationRequest.getEmail());
@@ -44,7 +47,7 @@ public class AccountController {
 	}
 
 	@PostMapping("/signUp")
-	public ResponseEntity<String> signUp(@RequestBody AccountBean accountBean) {
+	public ResponseEntity<String> signUp(@Valid @RequestBody AccountBean accountBean) {
 		accountService.signUp(accountBean);
 		return new ResponseEntity<>("Success", HttpStatus.OK);
 	}

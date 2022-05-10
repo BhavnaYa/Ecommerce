@@ -4,6 +4,8 @@ import com.demo.order.enums.OrderStatus;
 
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,14 +14,17 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@Document("OrderDB")
+@Document("Order")
 public class OrderBean {
 	
 	@Id
 	private String orderId;
+	@NotNull
 	private String emailId;
-	private String address;
+	@NotNull
+	private Address address;
 	private OrderStatus orderStatus;
+	@NotNull
 	private List<String> orderInfo;
 	private int quantity;
 	private double orderTotal;

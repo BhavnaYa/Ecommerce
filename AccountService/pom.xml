@@ -72,7 +72,26 @@
 			<artifactId>jjwt</artifactId>
 			<version>0.9.1</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.codehaus.mojo/sonar-maven-plugin -->
+		<dependency>
+		    <groupId>org.codehaus.mojo</groupId>
+		    <artifactId>sonar-maven-plugin</artifactId>
+		    <version>3.4.0.905</version>
+		    <type>pom</type>
+		</dependency>
 	</dependencies>
+	<profiles>
+        <profile>
+            <id>sonar</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!-- Optional URL to server. Default value is http://localhost:9000 -->
+                <sonar.host.url> http://localhost:9000 </sonar.host.url>
+            </properties>
+        </profile>
+     </profiles>
 
 	<build>
 		<plugins>
