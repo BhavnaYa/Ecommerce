@@ -52,7 +52,7 @@
    
    ***- [Sumit Bharadwaj](https://github.com/b-sumit)***
    
-   ***- Vinay Singh***
+   ***- [Vinay Singh](https://github.com/kumarsinghvinay045)***
 
 
 
